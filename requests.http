@@ -1,0 +1,58 @@
+### Get all users (authorized)
+GET http://localhost:5113/users
+Authorization: Bearer dev-token-123
+
+###
+
+### Create a new user
+POST http://localhost:5113/users
+Authorization: Bearer dev-token-123
+Content-Type: application/json
+
+{
+  "firstName": "John",
+  "lastName": "Doe",
+  "email": "john.doe@example.com"
+}
+
+###
+
+### Get user by ID
+GET http://localhost:5113/users/0f510010-f93e-41c1-8880-b0a8951b9b62
+Authorization: Bearer dev-token-123
+
+###
+
+### Update user
+PUT http://localhost:5113/users/0f510010-f93e-41c1-8880-b0a8951b9b62
+Authorization: Bearer dev-token-123
+Content-Type: application/json
+
+{
+  "firstName": "Jane",
+  "email": "jane.doe@example.com"
+}
+
+###
+
+### Delete user
+DELETE http://localhost:5113/users/0f510010-f93e-41c1-8880-b0a8951b9b62
+Authorization: Bearer dev-token-123
+
+###
+
+### Unauthorized request (should return 401)
+GET http://localhost:5113/users
+
+###
+
+### Create user with invalid email (should return 400)
+POST http://localhost:5113/users
+Authorization: Bearer dev-token-123
+Content-Type: application/json
+
+{
+  "firstName": "Invalid",
+  "lastName": "Email",
+  "email": "not-an-email"
+}
